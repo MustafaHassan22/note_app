@@ -1,1 +1,2 @@
 flutter pakages pub run build_runner build
+state is AddNoteLoading ? true : false
