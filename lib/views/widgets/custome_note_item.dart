@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:note_app/models/note_model.dart';
 import 'package:note_app/views/widgets/edit_note_body.dart';
 
 class NoteItem extends StatelessWidget {
-  const NoteItem({super.key});
+  const NoteItem({super.key, required this.note});
+
+  final NoteModel note;
 
   @override
   Widget build(BuildContext context) {
@@ -15,22 +18,22 @@ class NoteItem extends StatelessWidget {
       child: Container(
         padding: const EdgeInsets.only(top: 25, bottom: 25, left: 16),
         decoration: BoxDecoration(
-          color: const Color(0xffFFCC80),
+          color: Color(note.color),
           borderRadius: BorderRadius.circular(16),
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.end,
           children: [
             ListTile(
-              title: const Text(
-                'Flutter Tips',
-                style: TextStyle(color: Colors.black, fontSize: 26),
+              title: Text(
+                note.title,
+                style: const TextStyle(color: Colors.black, fontSize: 26),
               ),
-              subtitle: const Padding(
-                padding: EdgeInsets.only(top: 16, bottom: 16),
+              subtitle: Padding(
+                padding: const EdgeInsets.only(top: 16, bottom: 16),
                 child: Text(
-                  'build your career with me bitch',
-                  style: TextStyle(color: Colors.black54, fontSize: 20),
+                  note.subTitle,
+                  style: const TextStyle(color: Colors.black54, fontSize: 20),
                 ),
               ),
               trailing: IconButton(
@@ -38,11 +41,11 @@ class NoteItem extends StatelessWidget {
                   icon:
                       const Icon(size: 30, Icons.delete, color: Colors.black)),
             ),
-            const Padding(
-              padding: EdgeInsets.only(right: 38),
+            Padding(
+              padding: const EdgeInsets.only(right: 38),
               child: Text(
-                'May22: 2024',
-                style: TextStyle(
+                note.date,
+                style: const TextStyle(
                   color: Colors.black54,
                 ),
               ),
